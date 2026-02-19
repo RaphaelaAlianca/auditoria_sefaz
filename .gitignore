@@ -1,0 +1,24 @@
+# venv
+.venv/
+venv/
+
+# Python cache
+__pycache__/
+*.pyc
+
+# banco / dados locais
+banco/*.db
+banco/*.sqlite
+banco/credenciais.json
+banco/credentials.json
+
+# entradas/saídas
+entrada/
+processados/
+erros/
+
+# logs
+*.log
+
+# VS Code
+.vscode/
