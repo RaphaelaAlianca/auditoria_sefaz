@@ -1,24 +1,51 @@
-# venv
+# ===============================
+# Ambiente Virtual
+# ===============================
 .venv/
 venv/
 
-# Python cache
+# ===============================
+# Python
+# ===============================
 __pycache__/
 *.pyc
+*.pyo
+*.pyd
+*.sqlite3
 
-# banco / dados locais
+# ===============================
+# Banco de Dados
+# ===============================
 banco/*.db
 banco/*.sqlite
+banco/*.sqlite3
+
+# ===============================
+# Credenciais (NUNCA subir)
+# ===============================
 banco/credenciais.json
 banco/credentials.json
+*.json
 
-# entradas/saídas
+# ===============================
+# Pastas operacionais
+# ===============================
 entrada/
 processados/
 erros/
 
-# logs
+# ===============================
+# Logs
+# ===============================
 *.log
 
+# ===============================
 # VS Code
+# ===============================
 .vscode/
+
+# ===============================
+# Sistema
+# ===============================
+.DS_Store
+Thumbs.db

@@ -1,0 +1,6 @@
+fastapi
+uvicorn
+pandas
+gspread
+google-auth
+openpyxl
