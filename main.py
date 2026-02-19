@@ -1,8 +1,6 @@
 import os
+import traceback
 from fastapi import FastAPI, Header, HTTPException
-
-# Importa o seu pipeline
-from app.rodar import main as rodar_pipeline
 
 app = FastAPI()
 
@@ -21,6 +19,11 @@ def run(x_api_key: str | None = Header(default=None)):
     if not os.path.exists(CREDS_PATH):
         raise HTTPException(status_code=500, detail=f"Credenciais não encontradas em {CREDS_PATH}")
 
-    # Se o seu código lê credenciais por caminho fixo, a gente ajusta depois.
-    rodar_pipeline()
-    return {"ok": True, "message": "Pipeline executada"}
+    try:
+        # Importa o pipeline só na hora de rodar (não derruba o uvicorn no boot)
+        from app.rodar import main as rodar_pipeline
+        rodar_pipeline()
+        return {"ok": True, "message": "Pipeline executada"}
+    except Exception as e:
+        tb = traceback.format_exc()
+        raise HTTPException(status_code=500, detail=f"{e}\n{tb}")
